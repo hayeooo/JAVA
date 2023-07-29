@@ -1,5 +1,12 @@
 package FileIO;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.List;
 
@@ -28,10 +35,25 @@ class Person implements Serializable{
 	
 }
 public class Serialization {
-	public static void main(String[] args) {
-		Person p=new Person("","","","");
-		if (p instanceof List<?>) {
+	private static File target=new File("");
+	private static void write() {
+		Person person=new Person("","","","");
+		try(ObjectOutputStream oos =new ObjectOutputStream(new FileOutputStream(target))){
+			oos.writeObject(person);
+		}catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private static void read() {
+		try(ObjectInputStream ois=new ObjectInputStream(new FileInputStream(target))){
+			Object readed=ois.readObject();
 			
+			if (readed!=null && readed instanceof Person) {
+				Person casted=(Person)readed;
+			}
+		}catch (IOException | ClassNotFoundException e) {
+			e.printStackTrace();
 		}
 	}
 }
