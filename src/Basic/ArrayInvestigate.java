@@ -5,7 +5,7 @@ public class ArrayInvestigate {
 		int sum=0;
 		char[][] grid=new char[4][4];
 		int[][] deltas= {{-1,0},{1,0},{0,-1},{0,1}};
-		/*
+		
 		for (int r=0;r<4;r++) {
 			for(int c=0;c<4;c++) {
 				if (grid[r][c]=='X') {
@@ -20,8 +20,6 @@ public class ArrayInvestigate {
 				}
 			}
 		}
-		*/
-		Arrays.copyOf
-		
+
 	}
 }
